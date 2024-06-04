@@ -4,21 +4,17 @@ import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
-const Home = () => {
+const Home = ({counter}) => {
+	const contador = counter.toString().padStart(6, "0");
+	console.log(contador);
+	const arregloContador = contador.split("");
+	console.log(arregloContador);
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="text-center bg-dark fs-1 d-flex justify-content-center text-white gap-5">
+			<div ><i className="far fa-clock"></i></div>
+			{arregloContador.map((elemento, index) => {
+				return <div key={index}><span>{elemento}</span> </div> 
+			})}
 		</div>
 	);
 };
